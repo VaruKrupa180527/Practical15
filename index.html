@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Practical 15 - GitHub Pages</title>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <style>
+        body {
+            font-family: Arial;
+            text-align: center;
+            padding: 30px;
+        }
+
+        .chart-box {
+            width: 80%;
+            max-width: 700px;
+            margin: 30px auto;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>Student Marks Visualization</h1>
+
+    <p id="message">Click the button to display the chart</p>
+
+    <button onclick="showChart()">
+        Show Chart
+    </button>
+
+    <div class="chart-box">
+        <canvas id="marksChart"></canvas>
+    </div>
+
+    <script>
+
+        function showChart() {
+
+            document.getElementById("message").innerHTML =
+                "Student marks chart displayed successfully";
+
+            const ctx =
+                document.getElementById("marksChart");
+
+            new Chart(ctx, {
+
+                type: "bar",
+
+                data: {
+                    labels: [
+                        "Krupa",
+                        "Subham",
+                        "Subhashini",
+                        "Krishna",
+                        "Veer"
+                    ],
+
+                    datasets: [{
+                        label: "Student Marks",
+
+                        data: [
+                            85,
+                            90,
+                            78,
+                            88,
+                            92
+                        ],
+
+                        borderWidth: 1
+                    }]
+                },
+
+                options: {
+                    responsive: true,
+
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            max: 100,
+                            title: {
+                                display: true,
+                                text: "Marks"
+                            }
+                        },
+
+                        x: {
+                            title: {
+                                display: true,
+                                text: "Students"
+                            }
+                        }
+                    }
+                }
+            });
+        }
+
+    </script>
+
+</body>
+</html>
